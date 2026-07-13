@@ -3,83 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neura Studio | Nova Language</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Real Logos via FontAwesome -->
+    <title>Nova Language | Neura Studio</title>
+    <!-- FontAwesome for UI Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Devicon for Real Tech Logos (Python, JS, Apple, Windows, etc.) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="assets/neurastudio_logo.png" alt="Neura Studio">
-            <span>Neura Studio™</span>
+    <!-- Premium Glassmorphism Navbar -->
+    <nav class="zorin-navbar">
+        <div class="nav-brand">
+            <img src="assets/logo.png" alt="Neura Studio Logo" class="brand-logo">
+            <span class="brand-text">Neura Studio™</span>
         </div>
         <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
             <li><a href="#nova-hub">Nova Hub</a></li>
-            <li><a href="#download" class="btn-primary">Download Nova</a></li>
+            <li><a href="#download" class="btn-primary">Download</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
-        <h1 class="gradient-text">Code the Universe.</h1>
-        <p>Introducing Nova. The first self-hosting, multi-dimensional language built for the AI & Quantum Era.</p>
+    <!-- Hero Section with Glowing Effects -->
+    <header class="zorin-hero">
+        <div class="glow-orb"></div>
+        <img src="assets/logo.png" alt="Nova Logo" class="hero-logo">
+        <h1 class="gradient-heading">Code the Universe.</h1>
+        <p class="hero-subtitle">The first self-hosting, multi-dimensional programming language built entirely in native C++ for the AI & Quantum Era.</p>
+        
+        <!-- Terminal Typing Effect Mockup -->
+        <div class="terminal-mockup">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">nova-repl ~ </span>
+            </div>
+            <div class="terminal-body">
+                <p><span class="prompt">javed@neurastudio:~$</span> <span id="typewriter"></span><span class="cursor">|</span></p>
+            </div>
+        </div>
     </header>
 
-    <section id="download" class="interactive-installer">
-        <h2>Interactive Installer</h2>
-        <p>Select your environment to generate the GUI-based installation command.</p>
-        
-        <div id="step-1" class="step-container active">
-            <h3>1. Choose Operating System</h3>
-            <div class="cards">
-                <div class="card" onclick="selectOS('Windows', 'fa-brands fa-windows')"><i class="fa-brands fa-windows"></i> Windows</div>
-                <div class="card" onclick="selectOS('macOS', 'fa-brands fa-apple')"><i class="fa-brands fa-apple"></i> macOS</div>
-                <div class="card" onclick="selectOS('Linux', 'fa-brands fa-linux')"><i class="fa-brands fa-linux"></i> Linux</div>
+    <!-- Interactive Installer Section -->
+    <section id="download" class="installer-section">
+        <h2 class="section-title">Get Nova Engine</h2>
+        <p class="section-desc">Select your environment to generate the native GUI-installer command.</p>
+
+        <!-- STEP 1: OS Selection -->
+        <div id="step-1" class="install-step active">
+            <h3 class="step-title">1. Select Operating System</h3>
+            <div class="zorin-grid">
+                <div class="zorin-card" onclick="selectOS('Windows', 'devicon-windows8-original')">
+                    <i class="devicon-windows8-original colored icon-large"></i>
+                    <span>Windows</span>
+                </div>
+                <div class="zorin-card" onclick="selectOS('macOS', 'devicon-apple-original')">
+                    <i class="devicon-apple-original colored icon-large" style="color: white;"></i>
+                    <span>macOS</span>
+                </div>
+                <div class="zorin-card" onclick="selectOS('Linux', 'devicon-linux-plain')">
+                    <i class="devicon-linux-plain colored icon-large"></i>
+                    <span>Linux / Unix</span>
+                </div>
             </div>
         </div>
 
-        <div id="step-2" class="step-container hidden">
-            <h3 id="selected-os-title"></h3>
-            <h3>2. Choose Editor / Target</h3>
-            <div class="cards">
-                <div class="card" onclick="selectIDE('VS Code')"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" width="40"> VS Code</div>
-                <div class="card" onclick="selectIDE('PyCharm')"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/PyCharm_Icon.svg" width="40"> PyCharm</div>
-                <div class="card" onclick="selectIDE('Terminal')"><i class="fa-solid fa-terminal" style="font-size: 40px;"></i> Terminal Base</div>
+        <!-- STEP 2: IDE Selection -->
+        <div id="step-2" class="install-step hidden">
+            <h3 class="step-title" id="selected-os-display">2. Select Target IDE</h3>
+            <div class="zorin-grid">
+                <div class="zorin-card" onclick="selectIDE('VS Code')">
+                    <i class="devicon-vscode-plain colored icon-large"></i>
+                    <span>VS Code</span>
+                </div>
+                <div class="zorin-card" onclick="selectIDE('PyCharm')">
+                    <i class="devicon-pycharm-plain colored icon-large"></i>
+                    <span>PyCharm</span>
+                </div>
+                <div class="zorin-card" onclick="selectIDE('Terminal')">
+                    <i class="devicon-bash-plain colored icon-large" style="color: white;"></i>
+                    <span>Terminal Only</span>
+                </div>
             </div>
         </div>
 
-        <div id="step-3" class="step-container hidden">
-            <h3>3. Run this command in your terminal</h3>
-            <div class="code-box">
-                <code id="install-command"></code>
-                <button onclick="copyCmd()"><i class="fa-solid fa-copy"></i> Copy</button>
+        <!-- STEP 3: Code Output -->
+        <div id="step-3" class="install-step hidden">
+            <h3 class="step-title">3. Run this command in your terminal</h3>
+            <div class="code-container">
+                <code id="final-command"></code>
+                <button class="copy-btn" onclick="copyCommand()">
+                    <i class="fa-solid fa-copy"></i> Copy
+                </button>
             </div>
-            <p style="margin-top:15px; color:#4ade80;"><i class="fa-solid fa-circle-check"></i> GUI Installer will launch automatically.</p>
-            <button class="btn-secondary" onclick="resetInstaller()">Start Over</button>
+            <p class="success-text"><i class="fa-solid fa-circle-check"></i> GUI Installer and extensions will configure automatically.</p>
+            <button class="btn-outline" onclick="resetInstaller()">Start Over</button>
         </div>
     </section>
 
+    <!-- Nova Hub Section with Real Logos -->
     <section id="nova-hub" class="hub-section">
-        <h2>Nova Hub <i class="fa-solid fa-cube"></i></h2>
-        <p>The Universal Package Registry. Import anything from any language.</p>
+        <h2 class="section-title">Nova Hub <i class="fa-solid fa-layer-group"></i></h2>
+        <p class="section-desc">The Universal Package Registry. Use any library from any language natively.</p>
+        
         <div class="hub-grid">
-            <div class="hub-card">
-                <i class="fa-brands fa-python" style="color:#facc15;"></i>
+            <div class="hub-package-card">
+                <div class="package-header">
+                    <i class="devicon-python-plain colored icon-medium"></i>
+                    <i class="devicon-tensorflow-original colored icon-medium"></i>
+                </div>
                 <h4>python:tensorflow</h4>
-                <code>Nova.import("python:tensorflow")</code>
+                <div class="package-code"><code>Nova.import("python:tensorflow")</code></div>
             </div>
-            <div class="hub-card">
-                <i class="fa-brands fa-js" style="color:#fde047;"></i>
+            
+            <div class="hub-package-card">
+                <div class="package-header">
+                    <i class="devicon-javascript-plain colored icon-medium"></i>
+                    <i class="devicon-express-original colored icon-medium" style="color: white;"></i>
+                </div>
                 <h4>js:express</h4>
-                <code>Nova.import("js:express")</code>
+                <div class="package-code"><code>Nova.import("js:express")</code></div>
             </div>
-            <div class="hub-card">
-                <img src="assets/neurastudio_logo.png" width="30">
+
+            <div class="hub-package-card">
+                <div class="package-header">
+                    <i class="devicon-cplusplus-plain colored icon-medium"></i>
+                    <img src="assets/logo.png" style="width: 40px;">
+                </div>
                 <h4>nova:quantum-core</h4>
-                <code>Nova.import("quantum-core")</code>
+                <div class="package-code"><code>Nova.import("nova:quantum")</code></div>
             </div>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2026 Neura Studio by Javed. All rights reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

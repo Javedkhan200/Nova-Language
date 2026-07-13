@@ -1,7 +1,8 @@
 // ==========================================
 // 1. BASIC MATH & LOGIC
 // ==========================================
-Nova.ask.user ("name:"text)
+Nova.ask.user ("name:"enter your name) 
+Output enter your name :
 Nova.show (name)
 Nova.show ("javed")
 68+ 789
@@ -136,63 +137,13 @@ Nova.home.tv.start ("Anime")
 
 Nova.home.door.lock ()
 Nova.show ("House is safe")
-// ==========================================
-// 10. ADVANCED LOGIC (NEW)
-// ==========================================
-Nova.check (100>50)
-Nova.show ("Nova is smart")
-Nova.loop (3)
-Nova.show ("Looping Engine Active")
 
 // ==========================================
-// 11. CUSTOM FUNCTIONS (NOVA METHODS)
+// 10. ADVANCED NEURASTUDIO DOMAINS
 // ==========================================
-Nova.define (HackSystem) {
-    Nova.show ("Initializing Hack Protocol...")
-    Nova.hardware.cpu.boost ("MAXIMUM")
-    Nova.os.check.battery ()
-}
-Nova.call (HackSystem)
-
-// ==========================================
-// 12. GAME & WEB3 TEST
-// ==========================================
-Nova.game.start ("Action_RPG")
-Nova.game.physics.gravity (9.8)
-Nova.game.render ("3D")
-
-Nova.blockchain.node.start ()
-Nova.blockchain.nft.mint ("MyArtwork")
-
-// ==========================================
-// 13. UNIVERSAL PACKAGES & TOOLING
-// ==========================================
-Nova.import ("python:tensorflow")
-Nova.import ("js:express")
-Nova.tool.lint ()
-
-// ==========================================
-// 14. IDE & LSP TEST
-// ==========================================
-Nova.ide.start_lsp ()
-Nova.ide.suggest ("os")
-// ==========================================
-// 15. MASSIVE DEPLOYMENT & QUANTUM TEST
-// ==========================================
-Nova.iot.flash ("Arduino_Uno")
-Nova.deploy.docker ("Nova_App")
 Nova.quantum.init ("512")
 Nova.quantum.run ()
-// ==========================================
-// 16. GRAPHICS, PHYSICS & UI TEST
-// ==========================================
 Nova.graphics.init ()
 Nova.physics.fluid ("Ocean_Simulation")
 Nova.ui.window ("My Awesome App")
 Nova.graphics.draw ()
-// ==========================================
-// 17. TESTING, TELEMETRY & DOCS TEST
-// ==========================================
-Nova.test.unit ()
-Nova.telemetry.track ()
-Nova.docs.build ()
