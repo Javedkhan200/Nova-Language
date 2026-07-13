@@ -1,0 +1,7 @@
+// This is the beginning of Nova Self-Hosting
+Nova.define (CompileNova) {
+    Nova.os.scan ("Memory")
+    Nova.show ("Generating Nova Binary...")
+    Nova.bytecode.generate ("Self_Hosted_Nova")
+}
+Nova.call (CompileNova)

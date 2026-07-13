@@ -1,0 +1,9 @@
+<idea-plugin>
+  <id>com.neurastudio.nova</id>
+  <name>Nova Language Support</name>
+  <vendor>Neurastudio</vendor>
+  <description>Official Support for Nova Language by Javed</description>
+  <extensions defaultExtensionNs="com.intellij">
+    <fileType name="Nova File" implementationClass="com.neurastudio.nova.NovaFileType" fieldName="INSTANCE" language="Nova" extensions="nova" />
+  </extensions>
+</idea-plugin>

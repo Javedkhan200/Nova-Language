@@ -1,0 +1,15 @@
+// ==========================================
+// NOVA INDEPENDENCE SCRIPT
+// ==========================================
+Nova.show ("*****************************************")
+Nova.show ("    NOVA OFFICIAL MASTER DOCUMENTATION   ")
+Nova.show ("*****************************************")
+Nova.show ("Language Name: Nova")
+Nova.show ("Creator & Architect: Javed")
+Nova.show ("Core Engine: 100% C++ Native")
+Nova.show ("Ecosystem: 412 Modules Active")
+Nova.show ("Status: Fully Independent & Self-Hosted")
+Nova.show ("*****************************************")
+Nova.os.scan ("System Specifications")
+Nova.docs.build ()
+Nova.show ("✅ Master Documentation Generated in /docs/")

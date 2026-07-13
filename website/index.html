@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neura Studio | Nova Language</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Real Logos via FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/neurastudio_logo.png" alt="Neura Studio">
+            <span>Neura Studio™</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#nova-hub">Nova Hub</a></li>
+            <li><a href="#download" class="btn-primary">Download Nova</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1 class="gradient-text">Code the Universe.</h1>
+        <p>Introducing Nova. The first self-hosting, multi-dimensional language built for the AI & Quantum Era.</p>
+    </header>
+
+    <section id="download" class="interactive-installer">
+        <h2>Interactive Installer</h2>
+        <p>Select your environment to generate the GUI-based installation command.</p>
+        
+        <div id="step-1" class="step-container active">
+            <h3>1. Choose Operating System</h3>
+            <div class="cards">
+                <div class="card" onclick="selectOS('Windows', 'fa-brands fa-windows')"><i class="fa-brands fa-windows"></i> Windows</div>
+                <div class="card" onclick="selectOS('macOS', 'fa-brands fa-apple')"><i class="fa-brands fa-apple"></i> macOS</div>
+                <div class="card" onclick="selectOS('Linux', 'fa-brands fa-linux')"><i class="fa-brands fa-linux"></i> Linux</div>
+            </div>
+        </div>
+
+        <div id="step-2" class="step-container hidden">
+            <h3 id="selected-os-title"></h3>
+            <h3>2. Choose Editor / Target</h3>
+            <div class="cards">
+                <div class="card" onclick="selectIDE('VS Code')"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" width="40"> VS Code</div>
+                <div class="card" onclick="selectIDE('PyCharm')"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/PyCharm_Icon.svg" width="40"> PyCharm</div>
+                <div class="card" onclick="selectIDE('Terminal')"><i class="fa-solid fa-terminal" style="font-size: 40px;"></i> Terminal Base</div>
+            </div>
+        </div>
+
+        <div id="step-3" class="step-container hidden">
+            <h3>3. Run this command in your terminal</h3>
+            <div class="code-box">
+                <code id="install-command"></code>
+                <button onclick="copyCmd()"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <p style="margin-top:15px; color:#4ade80;"><i class="fa-solid fa-circle-check"></i> GUI Installer will launch automatically.</p>
+            <button class="btn-secondary" onclick="resetInstaller()">Start Over</button>
+        </div>
+    </section>
+
+    <section id="nova-hub" class="hub-section">
+        <h2>Nova Hub <i class="fa-solid fa-cube"></i></h2>
+        <p>The Universal Package Registry. Import anything from any language.</p>
+        <div class="hub-grid">
+            <div class="hub-card">
+                <i class="fa-brands fa-python" style="color:#facc15;"></i>
+                <h4>python:tensorflow</h4>
+                <code>Nova.import("python:tensorflow")</code>
+            </div>
+            <div class="hub-card">
+                <i class="fa-brands fa-js" style="color:#fde047;"></i>
+                <h4>js:express</h4>
+                <code>Nova.import("js:express")</code>
+            </div>
+            <div class="hub-card">
+                <img src="assets/neurastudio_logo.png" width="30">
+                <h4>nova:quantum-core</h4>
+                <code>Nova.import("quantum-core")</code>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

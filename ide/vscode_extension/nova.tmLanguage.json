@@ -1,0 +1,9 @@
+{
+  "name": "Nova",
+  "scopeName": "source.nova",
+  "patterns": [
+    { "name": "keyword.other.nova", "match": "\\b(Nova\\.[a-z.]+)\\b" },
+    { "name": "string.quoted.double.nova", "match": "\".*?\"" },
+    { "name": "comment.line.double-slash.nova", "match": "//.*" }
+  ]
+}

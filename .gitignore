@@ -1,0 +1,4 @@
+*.o
+*.nbc
+nova
+system_logs/*.log

@@ -1,0 +1,3 @@
+/data/data/com.termux/files/home/Nova/CMakeFiles/nova.dir
+/data/data/com.termux/files/home/Nova/CMakeFiles/edit_cache.dir
+/data/data/com.termux/files/home/Nova/CMakeFiles/rebuild_cache.dir
