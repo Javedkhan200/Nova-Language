@@ -4,9 +4,9 @@
 #include "../advanced_ai_core/ai_core.h"
 #include <iostream>
 #include <string>
+#include <unordered_map> // <-- FIX!
 
-// Helper to evaluate basic math from strings (like "A+B" or "68+789")
-std::string evaluateMath(const std::string& expr, std::map<std::string, std::string>& mem) {
+std::string evaluateMath(const std::string& expr, std::unordered_map<std::string, std::string>& mem) {
     std::string cleanExpr = expr;
     size_t opPos = std::string::npos;
     char op = ' ';
@@ -18,8 +18,7 @@ std::string evaluateMath(const std::string& expr, std::map<std::string, std::str
     if (opPos != std::string::npos) {
         std::string leftStr = cleanExpr.substr(0, opPos);
         std::string rightStr = cleanExpr.substr(opPos + 1);
-        
-        // Resolve variables from memory
+
         if (mem.count(leftStr)) leftStr = mem[leftStr];
         if (mem.count(rightStr)) rightStr = mem[rightStr];
 
@@ -32,7 +31,10 @@ std::string evaluateMath(const std::string& expr, std::map<std::string, std::str
             if (op == '/') return (right == 0) ? "Error: Div/0" : std::to_string(left / right);
         } catch (...) { return "Error: NaN"; }
     }
-    return mem.count(expr) ? mem[expr] : expr;
+    // Clean up quotes for direct string display
+    if (!cleanExpr.empty() && cleanExpr.front() == '"') cleanExpr.erase(0, 1);
+    if (!cleanExpr.empty() && cleanExpr.back() == '"') cleanExpr.pop_back();
+    return mem.count(expr) ? mem[expr] : cleanExpr;
 }
 
 void VirtualMachine::executeNode(ASTNode* node) {
@@ -44,7 +46,10 @@ void VirtualMachine::executeNode(ASTNode* node) {
             if(arg.find('+') != std::string::npos || arg.find('-') != std::string::npos || arg.find('*') != std::string::npos || arg.find('/') != std::string::npos) {
                 std::cout << "▶️  " << evaluateMath(arg, memory) << "\n";
             } else {
-                std::cout << "▶️  " << (memory.count(arg) ? memory[arg] : arg) << "\n";
+                std::string out = memory.count(arg) ? memory[arg] : arg;
+                if (!out.empty() && out.front() == '"') out.erase(0, 1);
+                if (!out.empty() && out.back() == '"') out.pop_back();
+                std::cout << "▶️  " << out << "\n";
             }
         }
         else if (cmd->domain == "math_calc") std::cout << "▶️  " << evaluateMath(arg, memory) << "\n";
@@ -52,12 +57,19 @@ void VirtualMachine::executeNode(ASTNode* node) {
         else if (cmd->domain == "ask") {
             if (cmd->action == "user") {
                 std::string prompt = arg, varName = "user_input";
-                size_t colonPos = prompt.find(':');
-                if(colonPos != std::string::npos) {
-                    varName = prompt.substr(0, colonPos);
-                    prompt = prompt.substr(colonPos + 1) + ": "; // Fixed the missing colon!
+                // Your Exact Syntax Matcher
+                if (arg.find("\"name:\"") == 0) { varName = "name"; prompt = arg.substr(7) + " : "; }
+                else if (arg.find("\"password:\"") == 0) { varName = "password"; prompt = arg.substr(11) + " : "; }
+                else if (arg.find("\"question:\"") == 0) { varName = "question"; prompt = arg.substr(11) + " : "; }
+                else {
+                    size_t colonPos = prompt.find(':');
+                    if(colonPos != std::string::npos) {
+                        varName = prompt.substr(0, colonPos);
+                        prompt = prompt.substr(colonPos + 1) + " : ";
+                    }
                 }
-                std::cout << "💬 [USER PROMPT] " << prompt;
+                
+                std::cout << "💬 " << prompt;
                 std::string input;
                 std::getline(std::cin, input);
                 memory[varName] = input;

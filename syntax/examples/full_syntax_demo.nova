@@ -1,7 +1,7 @@
 // ==========================================
 // 1. BASIC MATH & LOGIC
 // ==========================================
-Nova.ask.user ("name:"text)
+Nova.ask.user ("name:"enter your name) 
 Nova.show (name)
 Nova.show ("javed")
 68+ 789
