@@ -3,144 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Language | Neura Studio</title>
-    <!-- FontAwesome for UI Icons -->
+    <title>Nova Language | Zorin Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Devicon for Real Tech Logos (Python, JS, Apple, Windows, etc.) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Premium Glassmorphism Navbar -->
-    <nav class="zorin-navbar">
-        <div class="nav-brand">
-            <img src="assets/logo.png" alt="Neura Studio Logo" class="brand-logo">
-            <span class="brand-text">Neura Studio™</span>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Nova">
+            <span>NOVA OS</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#nova-hub">Nova Hub</a></li>
-            <li><a href="#download" class="btn-primary">Download</a></li>
-        </ul>
+        <div class="nav-links">
+            <a href="#">Overview</a>
+            <a href="#">For Developers</a>
+            <a href="#">Pro</a>
+        </div>
+        <a href="#download" class="btn-blue-outline">Download</a>
     </nav>
 
-    <!-- Hero Section with Glowing Effects -->
-    <header class="zorin-hero">
-        <div class="glow-orb"></div>
-        <img src="assets/logo.png" alt="Nova Logo" class="hero-logo">
-        <h1 class="gradient-heading">Code the Universe.</h1>
-        <p class="hero-subtitle">The first self-hosting, multi-dimensional programming language built entirely in native C++ for the AI & Quantum Era.</p>
-        
-        <!-- Terminal Typing Effect Mockup -->
-        <div class="terminal-mockup">
-            <div class="terminal-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="terminal-title">nova-repl ~ </span>
-            </div>
-            <div class="terminal-body">
-                <p><span class="prompt">javed@neurastudio:~$</span> <span id="typewriter"></span><span class="cursor">|</span></p>
-            </div>
-        </div>
+    <header class="hero">
+        <h1>Make your code <br><span class="highlight-blue">faster.</span></h1>
+        <p>Nova is the ultimate alternative to Python and C++, designed to make your development faster, more powerful, secure, and limitless. All while staying familiar and <strong>simple</strong> to use.</p>
+        <a href="#download" class="btn-blue-solid">Download Nova Engine</a>
     </header>
 
-    <!-- Interactive Installer Section -->
+    <div class="showcase">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Code UI" class="screen side-screen">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Main UI" class="screen main-screen">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Hacker UI" class="screen side-screen">
+    </div>
+
+    <div class="press-logos">
+        <div class="press-item">
+            <h3>Forbes</h3>
+            <p>"[Nova] is just so clean and powerful. I don't really anticipate a learning curve for new developers."</p>
+        </div>
+        <div class="press-item">
+            <h3>TechRadar</h3>
+            <p>"It has everything in terms of offering a friendly experience to those coming from Python or Java."</p>
+        </div>
+    </div>
+
     <section id="download" class="installer-section">
-        <h2 class="section-title">Get Nova Engine</h2>
-        <p class="section-desc">Select your environment to generate the native GUI-installer command.</p>
-
-        <!-- STEP 1: OS Selection -->
-        <div id="step-1" class="install-step active">
-            <h3 class="step-title">1. Select Operating System</h3>
-            <div class="zorin-grid">
-                <div class="zorin-card" onclick="selectOS('Windows', 'devicon-windows8-original')">
-                    <i class="devicon-windows8-original colored icon-large"></i>
-                    <span>Windows</span>
-                </div>
-                <div class="zorin-card" onclick="selectOS('macOS', 'devicon-apple-original')">
-                    <i class="devicon-apple-original colored icon-large" style="color: white;"></i>
-                    <span>macOS</span>
-                </div>
-                <div class="zorin-card" onclick="selectOS('Linux', 'devicon-linux-plain')">
-                    <i class="devicon-linux-plain colored icon-large"></i>
-                    <span>Linux / Unix</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- STEP 2: IDE Selection -->
-        <div id="step-2" class="install-step hidden">
-            <h3 class="step-title" id="selected-os-display">2. Select Target IDE</h3>
-            <div class="zorin-grid">
-                <div class="zorin-card" onclick="selectIDE('VS Code')">
-                    <i class="devicon-vscode-plain colored icon-large"></i>
-                    <span>VS Code</span>
-                </div>
-                <div class="zorin-card" onclick="selectIDE('PyCharm')">
-                    <i class="devicon-pycharm-plain colored icon-large"></i>
-                    <span>PyCharm</span>
-                </div>
-                <div class="zorin-card" onclick="selectIDE('Terminal')">
-                    <i class="devicon-bash-plain colored icon-large" style="color: white;"></i>
-                    <span>Terminal Only</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- STEP 3: Code Output -->
-        <div id="step-3" class="install-step hidden">
-            <h3 class="step-title">3. Run this command in your terminal</h3>
-            <div class="code-container">
-                <code id="final-command"></code>
-                <button class="copy-btn" onclick="copyCommand()">
-                    <i class="fa-solid fa-copy"></i> Copy
-                </button>
-            </div>
-            <p class="success-text"><i class="fa-solid fa-circle-check"></i> GUI Installer and extensions will configure automatically.</p>
-            <button class="btn-outline" onclick="resetInstaller()">Start Over</button>
-        </div>
-    </section>
-
-    <!-- Nova Hub Section with Real Logos -->
-    <section id="nova-hub" class="hub-section">
-        <h2 class="section-title">Nova Hub <i class="fa-solid fa-layer-group"></i></h2>
-        <p class="section-desc">The Universal Package Registry. Use any library from any language natively.</p>
+        <h2>Get Nova for your PC</h2>
         
-        <div class="hub-grid">
-            <div class="hub-package-card">
-                <div class="package-header">
-                    <i class="devicon-python-plain colored icon-medium"></i>
-                    <i class="devicon-tensorflow-original colored icon-medium"></i>
-                </div>
-                <h4>python:tensorflow</h4>
-                <div class="package-code"><code>Nova.import("python:tensorflow")</code></div>
-            </div>
-            
-            <div class="hub-package-card">
-                <div class="package-header">
-                    <i class="devicon-javascript-plain colored icon-medium"></i>
-                    <i class="devicon-express-original colored icon-medium" style="color: white;"></i>
-                </div>
-                <h4>js:express</h4>
-                <div class="package-code"><code>Nova.import("js:express")</code></div>
-            </div>
-
-            <div class="hub-package-card">
-                <div class="package-header">
-                    <i class="devicon-cplusplus-plain colored icon-medium"></i>
-                    <img src="assets/logo.png" style="width: 40px;">
-                </div>
-                <h4>nova:quantum-core</h4>
-                <div class="package-code"><code>Nova.import("nova:quantum")</code></div>
+        <div id="step-1" class="step active">
+            <h3>Choose your OS</h3>
+            <div class="grid">
+                <div class="card" onclick="selectOS('Windows')"><i class="devicon-windows8-original colored"></i> Windows</div>
+                <div class="card" onclick="selectOS('macOS')"><i class="devicon-apple-original colored"></i> macOS</div>
+                <div class="card" onclick="selectOS('Linux')"><i class="devicon-linux-plain colored"></i> Linux</div>
             </div>
         </div>
+
+        <div id="step-2" class="step hidden">
+            <h3>Select IDE Integration</h3>
+            <div class="grid">
+                <div class="card" onclick="selectIDE('VS Code')"><i class="devicon-vscode-plain colored"></i> VS Code</div>
+                <div class="card" onclick="selectIDE('PyCharm')"><i class="devicon-pycharm-plain colored"></i> PyCharm</div>
+                <div class="card" onclick="selectIDE('Terminal')"><i class="devicon-bash-plain colored"></i> Terminal</div>
+            </div>
+        </div>
+
+        <div id="step-3" class="step hidden">
+            <h3>Run this in your terminal</h3>
+            <div class="code-box">
+                <code id="final-command"></code>
+                <button onclick="copyCommand()"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <button class="btn-blue-outline" onclick="location.reload()" style="margin-top:20px;">Start Over</button>
+        </div>
     </section>
-
-    <footer>
-        <p>&copy; 2026 Neura Studio by Javed. All rights reserved.</p>
-    </footer>
-
+    
     <script src="script.js"></script>
 </body>
 </html>

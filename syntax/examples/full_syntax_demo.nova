@@ -1,8 +1,7 @@
 // ==========================================
 // 1. BASIC MATH & LOGIC
 // ==========================================
-Nova.ask.user ("name:"enter your name) 
-Output enter your name :
+Nova.ask.user ("name:"text)
 Nova.show (name)
 Nova.show ("javed")
 68+ 789
@@ -137,13 +136,3 @@ Nova.home.tv.start ("Anime")
 
 Nova.home.door.lock ()
 Nova.show ("House is safe")
-
-// ==========================================
-// 10. ADVANCED NEURASTUDIO DOMAINS
-// ==========================================
-Nova.quantum.init ("512")
-Nova.quantum.run ()
-Nova.graphics.init ()
-Nova.physics.fluid ("Ocean_Simulation")
-Nova.ui.window ("My Awesome App")
-Nova.graphics.draw ()
