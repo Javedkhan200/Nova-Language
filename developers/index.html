@@ -3,25 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>For Developers | Nova Hub</title>
-    <link rel="stylesheet" href="../style.css?v=10.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1f2937; margin: 0; padding: 0; text-align: center; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.4rem; color: #0f172a; text-decoration: none; }
+        .logo img { height: 45px; border-radius: 8px; }
+        .nav-links a { margin: 0 15px; text-decoration: none; color: #6b7280; font-weight: 600; }
+        .hub-section { padding: 40px 5%; }
+        .search-container { margin: 30px auto; max-width: 600px; display: flex; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 30px; overflow: hidden; background: white; border: 1px solid #e2e8f0; }
+        .search-container input { flex: 1; padding: 15px 25px; border: none; font-size: 1.1rem; outline: none; }
+        .search-container button { background: #0f172a; color: white; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; }
+        .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .package-card { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; gap: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); box-sizing: border-box; }
+        .package-card i { font-size: 50px; }
+        .package-card h3 { font-size: 1.1rem; margin: 5px 0; font-weight: 700; color: #1e293b; }
+        .package-card code { background: #0f172a; color: #38bdf8; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; width: 100%; text-align: center; word-break: break-all; font-family: monospace; }
+    </style>
 </head>
-<body style="background: #f8fafc;">
+<body>
     <nav class="navbar">
         <a href="../index.html" class="logo">
-            <img src="../assets/logo.png" onerror="this.src='https://ui-avatars.com/api/?name=Neura+Studio&background=0D8ABC&color=fff&rounded=true'">
+            <img src="../assets/logo.png" alt="Neura Studio">
             <span>NEURA STUDIO</span>
         </a>
-        <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="../overview/index.html">Overview</a>
-            <a href="../pro/index.html">Pro</a>
-        </div>
+        <div class="nav-links"><a href="../index.html">Home</a><a href="../overview/index.html">Overview</a><a href="../pro/index.html">Pro</a></div>
     </nav>
-    <header style="padding: 80px 20px 20px; text-align: center;">
-        <h1 style="font-size: 4rem; color: #0f172a; margin-bottom: 20px;">Nova Hub <i class="fa-solid fa-boxes-stacked" style="color: #0ea5e9;"></i></h1>
-        <p style="font-size: 1.3rem; color: #475569; max-width: 800px; margin: 0 auto;">The Universal Package Manager. Search and install from over <strong style="color: #0ea5e9;">3,560,000+</strong> packages natively.</p>
+    <header style="padding: 60px 20px 10px;">
+        <h1 style="font-size: 3.5rem; color: #0f172a; font-weight: 800; margin: 0;">Nova Hub <i class="fa-solid fa-boxes-stacked" style="color: #0ea5e9;"></i></h1>
+        <p style="color: #64748b; font-size: 1.2rem; margin-top: 10px;">The Universal Package Manager. Search and install from 3,560,000+ packages.</p>
     </header>
     <section class="hub-section">
         <div class="search-container">
@@ -40,16 +52,12 @@
             {n: "php:laravel", i: "devicon-laravel-plain colored"}, {n: "go:gin", i: "devicon-go-plain colored"},
             {n: "csharp:dotnet", i: "devicon-dot-net-plain colored"}, {n: "swift:ui", i: "devicon-swift-plain colored"},
             {n: "dart:flutter", i: "devicon-flutter-plain colored"}, {n: "python:numpy", i: "devicon-numpy-original colored"},
-            {n: "js:vue", i: "devicon-vuejs-plain colored"}, {n: "kotlin:android", i: "devicon-kotlin-plain colored"},
-            {n: "python:keras", i: "devicon-keras-plain colored"}, {n: "c:opengl", i: "devicon-c-plain colored"},
-            {n: "js:angular", i: "devicon-angularjs-plain colored"}, {n: "rust:actix", i: "devicon-rust-plain colored"},
-            {n: "nova:robotics-api", i: "fa-solid fa-robot"}, {n: "java:hibernate", i: "devicon-java-plain colored"},
-            {n: "nova:ai-brain", i: "fa-solid fa-brain"}, {n: "python:pytorch", i: "devicon-pytorch-original colored"}
+            {n: "js:vue", i: "devicon-vuejs-plain colored"}, {n: "kotlin:android", i: "devicon-kotlin-plain colored"}
         ];
         function render(list) {
             document.getElementById('package-grid').innerHTML = list.map(p => 
                 `<div class="package-card">
-                    <i class="${p.i}" style="${p.i.includes('fa-') ? 'font-size: 65px; color: #8b5cf6;' : ''}"></i>
+                    <i class="${p.i}" style="${p.i.includes('fa-') ? 'font-size: 50px; color: #8b5cf6;' : ''}"></i>
                     <h3>${p.n}</h3>
                     <code>Nova.import("${p.n}")</code>
                 </div>`
