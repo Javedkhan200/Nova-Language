@@ -44,7 +44,7 @@
             {n: "js:vue", i: "devicon-vuejs-plain colored"}, {n: "kotlin:android", i: "devicon-kotlin-plain colored"}
         ];
         function render(list) {
-            document.getElementById('package-grid').innerHTML = list.map(p => 
+            document.getElementById('package-grid').innerHTML = list.map(p =>
                 `<div class="package-card">
                     <i class="${p.i}" style="${p.i.includes('fa-') ? 'font-size: 60px; color: #8b5cf6;' : ''}"></i>
                     <h3>${p.n}</h3>
