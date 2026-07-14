@@ -4,10 +4,13 @@
 #include "../advanced_ai_core/ai_core.h"
 #include <iostream>
 #include <string>
-#include <unordered_map> // <-- FIX!
+#include <unordered_map>
 
 std::string evaluateMath(const std::string& expr, std::unordered_map<std::string, std::string>& mem) {
     std::string cleanExpr = expr;
+    if (!cleanExpr.empty() && cleanExpr.front() == '"') cleanExpr.erase(0, 1);
+    if (!cleanExpr.empty() && cleanExpr.back() == '"') cleanExpr.pop_back();
+
     size_t opPos = std::string::npos;
     char op = ' ';
     if (cleanExpr.find('+') != std::string::npos) { opPos = cleanExpr.find('+'); op = '+'; }
@@ -29,11 +32,11 @@ std::string evaluateMath(const std::string& expr, std::unordered_map<std::string
             if (op == '-') return std::to_string(left - right);
             if (op == '*') return std::to_string(left * right);
             if (op == '/') return (right == 0) ? "Error: Div/0" : std::to_string(left / right);
-        } catch (...) { return "Error: NaN"; }
+        } catch (...) { 
+            // अगर यह मैथ नहीं है (जैसे Self-Hosted), तो असल टेक्स्ट वापस कर दो!
+            return mem.count(expr) ? mem[expr] : cleanExpr; 
+        }
     }
-    // Clean up quotes for direct string display
-    if (!cleanExpr.empty() && cleanExpr.front() == '"') cleanExpr.erase(0, 1);
-    if (!cleanExpr.empty() && cleanExpr.back() == '"') cleanExpr.pop_back();
     return mem.count(expr) ? mem[expr] : cleanExpr;
 }
 
@@ -53,11 +56,9 @@ void VirtualMachine::executeNode(ASTNode* node) {
             }
         }
         else if (cmd->domain == "math_calc") std::cout << "▶️  " << evaluateMath(arg, memory) << "\n";
-
         else if (cmd->domain == "ask") {
             if (cmd->action == "user") {
                 std::string prompt = arg, varName = "user_input";
-                // Your Exact Syntax Matcher
                 if (arg.find("\"name:\"") == 0) { varName = "name"; prompt = arg.substr(7) + " : "; }
                 else if (arg.find("\"password:\"") == 0) { varName = "password"; prompt = arg.substr(11) + " : "; }
                 else if (arg.find("\"question:\"") == 0) { varName = "question"; prompt = arg.substr(11) + " : "; }
@@ -68,7 +69,6 @@ void VirtualMachine::executeNode(ASTNode* node) {
                         prompt = prompt.substr(colonPos + 1) + " : ";
                     }
                 }
-                
                 std::cout << "💬 " << prompt;
                 std::string input;
                 std::getline(std::cin, input);

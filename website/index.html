@@ -89,7 +89,7 @@
     
     <script>
         function showCmd(os) {
-            let cmd = os === 'Windows' ? 'iwr -useb https://get.neurastudio.com/nova.ps1 | iex' : 'curl -sL https://get.neurastudio.com/nova.sh | bash';
+            let cmd = os === 'Windows' ? 'iwr -useb https://raw.githubusercontent.com/Javedkhan200/Nova-Language/main/install.ps1 | iex' : 'curl -sL https://raw.githubusercontent.com/Javedkhan200/Nova-Language/main/install.sh | bash';
             document.getElementById('final-command').innerText = cmd;
             document.getElementById('cmd-box').classList.remove('hidden');
         }
