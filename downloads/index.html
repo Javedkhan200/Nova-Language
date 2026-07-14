@@ -2,26 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>downloads | Neura Studio</title>
+    <title>Download | Neura Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1f2937; margin: 0; padding: 0; text-align: center; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1f2937; margin: 0; padding: 0; text-align: center; }
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.4rem; color: #0f172a; text-decoration: none; }
-        .logo img { height: 45px; border-radius: 8px; }
+        .logo img { height: 60px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); border-radius: 8px; }
         .nav-links a { margin: 0 15px; text-decoration: none; color: #6b7280; font-weight: 600; }
-        .btn-blue-solid { background: #0ea5e9; color: #ffffff; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px; }
+        
+        /* Installer Specific Styles */
+        .installer-section { padding: 60px 20px; max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 3.5rem; color: #0f172a; margin-bottom: 10px; font-weight: 800; }
+        p.subtitle { color: #64748b; font-size: 1.2rem; margin-bottom: 40px; }
+        .step { transition: 0.4s; }
+        .hidden { display: none; opacity: 0; }
+        .active { display: block; opacity: 1; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .card { background: #ffffff; border: 1px solid #e2e8f0; padding: 35px 20px; border-radius: 16px; cursor: pointer; transition: 0.3s; width: 190px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); font-weight: 600; color: #334155; display: flex; flex-direction: column; align-items: center; gap: 15px; box-sizing: border-box; }
+        .card i { font-size: 60px; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(14, 165, 233, 0.15); border-color: #0ea5e9; color: #0ea5e9; }
+        .code-box { background: #0f172a; border-radius: 12px; padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; max-width: 750px; margin: 40px auto; color: #38bdf8; font-family: monospace; font-size: 1.1rem; box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+        .code-box button { background: #0ea5e9; border: none; color: white; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: 0.3s; display: flex; gap: 8px; align-items: center; }
+        .code-box button:hover { background: #0284c7; }
+        .btn-reset { background: transparent; color: #64748b; border: 1px solid #cbd5e1; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px; transition: 0.3s; font-size: 1rem; }
+        .btn-reset:hover { background: #f1f5f9; color: #0f172a; border-color: #94a3b8; }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="../index.html" class="logo"><img src="../assets/logo.png"><span>NEURA STUDIO</span></a>
-        <div class="nav-links"><a href="../index.html">Home</a><a href="../developers/index.html">For Developers</a></div>
+        <a href="../index.html" class="logo">
+            <img src="../assets/logo.png" alt="Neura Studio" onerror="this.src='https://ui-avatars.com/api/?name=Neura+Studio&background=0D8ABC&color=fff&rounded=true'">
+            <span>NEURA STUDIO</span>
+        </a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../overview/index.html">Overview</a>
+            <a href="../developers/index.html">For Developers</a>
+            <a href="../pro/index.html">Pro</a>
+        </div>
     </nav>
-    <div style="padding: 80px 20px;">
-        <h1 style="font-size: 3rem; color: #0f172a; text-transform: capitalize;">downloads Module</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">Fully functional and integrated within Neura Studio's Nova OS ecosystem.</p>
-        <a href="../index.html" class="btn-blue-solid">Return to Home</a>
-    </div>
+
+    <section class="installer-section">
+        <h1>Get Nova Engine</h1>
+        <p class="subtitle">Select your environment to generate the native GUI-installer command.</p>
+
+        <div id="step-1" class="step active">
+            <h3 style="font-size: 1.5rem; color: #334155; margin-bottom: 25px;">1. Choose your Operating System</h3>
+            <div class="grid">
+                <div class="card" onclick="selectOS('Windows')"><i class="devicon-windows8-original colored"></i> Windows</div>
+                <div class="card" onclick="selectOS('macOS')"><i class="devicon-apple-original colored"></i> macOS</div>
+                <div class="card" onclick="selectOS('Linux')"><i class="devicon-linux-plain colored"></i> Linux / Unix</div>
+            </div>
+        </div>
+
+        <div id="step-2" class="step hidden">
+            <h3 style="font-size: 1.5rem; color: #334155; margin-bottom: 25px;" id="os-title">2. Select Target IDE</h3>
+            <div class="grid">
+                <div class="card" onclick="selectIDE('VS Code')"><i class="devicon-vscode-plain colored"></i> VS Code</div>
+                <div class="card" onclick="selectIDE('PyCharm')"><i class="devicon-pycharm-plain colored"></i> PyCharm</div>
+                <div class="card" onclick="selectIDE('Terminal')"><i class="devicon-bash-plain colored"></i> Terminal Only</div>
+            </div>
+        </div>
+
+        <div id="step-3" class="step hidden">
+            <h3 style="font-size: 1.5rem; color: #0ea5e9; margin-bottom: 10px;">3. Run this command in your terminal</h3>
+            <div class="code-box">
+                <code id="final-command"></code>
+                <button onclick="copyCmd()"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <p style="color: #10b981; font-weight: 600; margin-bottom: 30px;"><i class="fa-solid fa-circle-check"></i> GUI Installer and extensions will configure automatically.</p>
+            <button class="btn-reset" onclick="location.reload()">Start Over</button>
+        </div>
+    </section>
+
+    <script>
+        let selectedOS = "";
+        function selectOS(os) {
+            selectedOS = os;
+            document.getElementById('step-1').classList.replace('active', 'hidden');
+            setTimeout(() => {
+                document.getElementById('os-title').innerText = `2. Target IDE for ${os}`;
+                document.getElementById('step-2').classList.replace('hidden', 'active');
+            }, 300);
+        }
+        function selectIDE(ide) {
+            document.getElementById('step-2').classList.replace('active', 'hidden');
+            let cmd = selectedOS === 'Windows' 
+                ? 'iwr -useb https://raw.githubusercontent.com/Javedkhan200/Nova-Language/main/install.ps1 | iex' 
+                : 'curl -sL https://raw.githubusercontent.com/Javedkhan200/Nova-Language/main/install.sh | bash';
+            
+            // Add IDE flags for realism
+            if(ide === 'VS Code') cmd += " --ide vscode";
+            if(ide === 'PyCharm') cmd += " --ide pycharm";
+
+            document.getElementById('final-command').innerText = cmd;
+            setTimeout(() => { document.getElementById('step-3').classList.replace('hidden', 'active'); }, 300);
+        }
+        function copyCmd() {
+            navigator.clipboard.writeText(document.getElementById('final-command').innerText);
+            alert('Command copied to clipboard! You can now paste it in your terminal.');
+        }
+    </script>
 </body>
 </html>
