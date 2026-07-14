@@ -4,9 +4,7 @@
 #include <vector>
 
 enum class TokenType {
-    IDENTIFIER, NUMBER, STRING, DOT, ASSIGN, PLUS, MINUS, MULTIPLY, DIVIDE,
-    GREATER, LESS, EQUAL_EQUAL, // New math comparators
-    LPAREN, RPAREN, LBRACE, RBRACE, END_OF_FILE, UNKNOWN
+    IDENTIFIER, NUMBER, STRING, EQUALS, OPERATOR, END_OF_FILE
 };
 
 struct Token {
@@ -15,13 +13,10 @@ struct Token {
 };
 
 class Lexer {
-public:
-    Lexer(const std::string& source);
-    std::vector<Token> tokenize();
-private:
     std::string src;
     size_t pos;
-    char peek();
-    char advance();
+public:
+    Lexer(const std::string& src);
+    std::vector<Token> tokenize();
 };
 #endif

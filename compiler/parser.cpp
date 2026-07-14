@@ -1,64 +1,55 @@
 #include "parser.h"
+#include <stdexcept>
 
-Parser::Parser(const std::vector<Token>& t) : tokens(t), pos(0) {}
-
-Token Parser::peek(int offset) {
-    if (pos + offset >= tokens.size()) return tokens.back();
-    return tokens[pos + offset];
-}
-
-Token Parser::advance() {
-    if (pos >= tokens.size()) return tokens.back();
-    return tokens[pos++];
-}
-
-std::unique_ptr<ASTNode> Parser::parseStatement() {
-    if (peek().value == "Nova" && peek(1).type == TokenType::DOT) {
-        advance(); advance(); 
-        std::string domain = advance().value;
-        std::string action = "";
-        while (peek().type == TokenType::DOT) {
-            advance();
-            action += advance().value;
-            if (peek().type == TokenType::DOT) action += ".";
-        }
-        std::string arg = "";
-        if (peek().type == TokenType::LPAREN) {
-            advance(); 
-            while (peek().type != TokenType::RPAREN && peek().type != TokenType::END_OF_FILE) {
-                arg += advance().value;
-            }
-            if (peek().type == TokenType::RPAREN) advance();
-        }
-        
-        // Handle Nova.define (Custom Functions)
-        if (domain == "define" && peek().type == TokenType::LBRACE) {
-            advance(); // Skip '{'
-            auto funcNode = std::make_unique<FunctionNode>(arg);
-            while (peek().type != TokenType::RBRACE && peek().type != TokenType::END_OF_FILE) {
-                if (auto stmt = parseStatement()) {
-                    funcNode->body.push_back(std::move(stmt));
-                } else advance();
-            }
-            if (peek().type == TokenType::RBRACE) advance(); // Skip '}'
-            return funcNode;
-        }
-        return std::make_unique<CommandNode>(domain, action, arg);
-    } 
-    else if (peek().type == TokenType::IDENTIFIER && peek(1).type == TokenType::ASSIGN) {
-        std::string varName = advance().value;
-        advance(); 
-        std::string value = advance().value;
-        return std::make_unique<AssignmentNode>(varName, value);
-    }
-    return nullptr;
-}
+Parser::Parser(const std::vector<Token>& tokens) : tokens(tokens), pos(0) {}
 
 std::vector<std::unique_ptr<ASTNode>> Parser::parse() {
-    std::vector<std::unique_ptr<ASTNode>> statements;
-    while (peek().type != TokenType::END_OF_FILE) {
-        if (auto stmt = parseStatement()) statements.push_back(std::move(stmt));
-        else advance();
+    std::vector<std::unique_ptr<ASTNode>> ast;
+    while (pos < tokens.size()) {
+        if (tokens[pos].type == TokenType::IDENTIFIER) {
+            std::string id = tokens[pos].value;
+            
+            if (pos + 2 < tokens.size() && tokens[pos+1].type == TokenType::EQUALS) {
+                ast.push_back(std::make_unique<AssignmentNode>(id, tokens[pos+2].value));
+                pos += 3;
+                continue;
+            }
+            
+            if (id.find("Nova.") == 0) {
+                std::string fullCmd = id.substr(5);
+                std::string domain = fullCmd, action = "";
+                size_t dotPos = fullCmd.find('.');
+                if (dotPos != std::string::npos) {
+                    domain = fullCmd.substr(0, dotPos);
+                    action = fullCmd.substr(dotPos + 1);
+                }
+                
+                std::string arg = "";
+                if (pos + 1 < tokens.size() && tokens[pos+1].type == TokenType::STRING) {
+                    arg = tokens[pos+1].value;
+                    if (!arg.empty() && arg.front() == '"') arg.erase(0, 1);
+                    if (!arg.empty() && arg.back() == '"') arg.pop_back();
+                    pos += 2;
+                } else { pos++; }
+                
+                ast.push_back(std::make_unique<CommandNode>(domain, action, arg));
+            } else {
+                throw std::runtime_error("Invalid Syntax. Unknown command: '" + id + "'");
+            }
+        } 
+        else if (tokens[pos].type == TokenType::NUMBER) {
+            if (pos + 2 < tokens.size() && tokens[pos+1].type == TokenType::OPERATOR) {
+                std::string domain = tokens[pos].value + tokens[pos+1].value;
+                std::string action = tokens[pos+2].value;
+                ast.push_back(std::make_unique<CommandNode>(domain, action, ""));
+                pos += 3;
+            } else {
+                throw std::runtime_error("Invalid Math Expression.");
+            }
+        }
+        else {
+            throw std::runtime_error("Unexpected token encountered.");
+        }
     }
-    return statements;
+    return ast;
 }
