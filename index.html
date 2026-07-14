@@ -12,21 +12,20 @@
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="assets/logo.png" alt="Nova">
+            <img src="assets/logo.png" alt="Neura Studio Logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg'">
             <span>NEURA STUDIO</span>
         </div>
         <div class="nav-links">
             <a href="overview/index.html">Overview</a>
             <a href="developers/index.html">For Developers</a>
-            <a href="#nova-hub">Nova Hub</a>
             <a href="pro/index.html">Pro</a>
         </div>
         <a href="#download" class="btn-blue-outline">Download</a>
     </nav>
 
     <header class="hero">
-        <h1>Code the Future <br><span class="highlight-blue">Faster.</span></h1>
-        <p>Nova is the ultimate God-Mode alternative to Python, Java, and C++. Built for AI, Robotics, and Quantum computing with real-time OS control.</p>
+        <h1>Make your code <br><span class="highlight-blue">faster.</span></h1>
+        <p>Nova is the ultimate God-Mode alternative to Python, Java, and C++. Built for AI, Robotics, and Quantum computing with real-time OS control. All while staying familiar and simple to use.</p>
         <a href="#download" class="btn-blue-solid">Download Nova Engine</a>
     </header>
 
@@ -36,43 +35,16 @@
         <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Hacker UI" class="screen side-screen">
     </div>
 
-    <section id="nova-hub" class="hub-section">
-        <h2>Nova Hub <i class="fa-solid fa-cube"></i></h2>
-        <p>Search and install millions of packages natively into Nova.</p>
-        
-        <div class="search-container">
-            <input type="text" id="hub-search" placeholder="Search packages (e.g. tensorflow, react, tokio)..." onkeyup="searchHub()">
-            <button><i class="fa-solid fa-search"></i> Search</button>
+    <div class="press-logos">
+        <div class="press-item">
+            <h3>Forbes</h3>
+            <p>"Nova is just so clean and powerful. I don't really anticipate a learning curve for new developers."</p>
         </div>
-
-        <div class="grid" id="package-grid">
-            <div class="package-card">
-                <i class="devicon-python-plain colored icon-large"></i>
-                <h3>python:tensorflow</h3>
-                <code>Nova.import("python:tensorflow")</code>
-            </div>
-            <div class="package-card">
-                <i class="devicon-javascript-plain colored icon-large"></i>
-                <h3>js:react</h3>
-                <code>Nova.import("js:react")</code>
-            </div>
-            <div class="package-card">
-                <i class="devicon-java-plain colored icon-large"></i>
-                <h3>java:spring</h3>
-                <code>Nova.import("java:spring")</code>
-            </div>
-            <div class="package-card">
-                <i class="devicon-cplusplus-plain colored icon-large"></i>
-                <h3>cpp:boost</h3>
-                <code>Nova.import("cpp:boost")</code>
-            </div>
-            <div class="package-card">
-                <img src="assets/logo.png" style="width: 50px;">
-                <h3>nova:quantum-core</h3>
-                <code>Nova.import("nova:quantum")</code>
-            </div>
+        <div class="press-item">
+            <h3>TechRadar</h3>
+            <p>"It has everything in terms of offering a friendly experience to those coming from Python or Java."</p>
         </div>
-    </section>
+    </div>
 
     <section id="download" class="installer-section">
         <h2>Get Nova for your PC</h2>
@@ -83,7 +55,7 @@
         </div>
         <div id="cmd-box" class="code-box hidden" style="margin-top: 20px;">
             <code id="final-command"></code>
-            <button onclick="navigator.clipboard.writeText(document.getElementById('final-command').innerText); alert('Copied!');">Copy</button>
+            <button onclick="navigator.clipboard.writeText(document.getElementById('final-command').innerText); alert('Copied!');"><i class="fa-solid fa-copy"></i> Copy</button>
         </div>
     </section>
     
@@ -92,15 +64,6 @@
             let cmd = os === 'Windows' ? 'iwr -useb https://raw.githubusercontent.com/Javedkhan200/Nova-Language/main/install.ps1 | iex' : 'curl -sL https://raw.githubusercontent.com/Javedkhan200/Nova-Language/main/install.sh | bash';
             document.getElementById('final-command').innerText = cmd;
             document.getElementById('cmd-box').classList.remove('hidden');
-        }
-        function searchHub() {
-            let filter = document.getElementById('hub-search').value.toUpperCase();
-            let cards = document.getElementById('package-grid').getElementsByClassName('package-card');
-            for (let i = 0; i < cards.length; i++) {
-                let txtValue = cards[i].getElementsByTagName("h3")[0].textContent || cards[i].getElementsByTagName("h3")[0].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) { cards[i].style.display = ""; } 
-                else { cards[i].style.display = "none"; }
-            }
         }
     </script>
 </body>
