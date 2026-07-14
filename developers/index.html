@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Nova Hub | Neura Studio</title>
-    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <title>For Developers | Nova Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body style="background: #f8fafc;">
     <nav class="navbar">
-        <div class="logo"><img src="../assets/logo.png"><span>NEURA STUDIO</span></div>
-        <div class="nav-links"><a href="../index.html">Home</a><a href="../overview/index.html">Overview</a><a href="../pro/index.html">Pro</a></div>
-    </nav>
-    <div class="hero">
-        <h1>Nova Hub <i class="fa-solid fa-boxes-stacked"></i></h1>
-        <input type="text" id="hub-search" placeholder="Search 3,560,000+ packages..." onkeyup="searchHub()" style="padding: 15px; width: 60%; border-radius: 8px; border: 1px solid #ccc;">
-        <div class="hub-grid" id="package-grid">
-            <!-- डायनामिक पैकेजेस यहां आएंगे -->
+        <div class="logo">
+            <img src="../assets/logo.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg'">
+            <span>NEURA STUDIO</span>
         </div>
-    </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../overview/index.html">Overview</a>
+            <a href="../pro/index.html">Pro</a>
+        </div>
+    </nav>
+    <header style="padding: 80px 20px 20px; text-align: center;">
+        <h1 style="font-size: 4rem; color: #0f172a; margin-bottom: 20px;">Nova Hub <i class="fa-solid fa-boxes-stacked" style="color: #0ea5e9;"></i></h1>
+        <p style="font-size: 1.3rem; color: #475569; max-width: 800px; margin: 0 auto;">The Universal Package Manager. Search and install from over <strong style="color: #0ea5e9;">3,560,000+</strong> packages natively.</p>
+    </header>
+    <section class="hub-section">
+        <div class="search-container">
+            <input type="text" id="hub-search" placeholder="Search Python, JS, C++, Java, Rust packages..." onkeyup="searchHub()">
+            <button><i class="fa-solid fa-search"></i> Search</button>
+        </div>
+        <div class="hub-grid" id="package-grid"></div>
+    </section>
     <script>
-        const registry = ["tensorflow", "react", "spring", "boost", "tokio", "pandas", "numpy", "django", "laravel", "express"];
-        const grid = document.getElementById('package-grid');
+        const registry = [
+            {n: "python:tensorflow", i: "devicon-tensorflow-original colored"}, {n: "js:react", i: "devicon-react-original colored"},
+            {n: "java:spring", i: "devicon-spring-plain colored"}, {n: "cpp:boost", i: "devicon-cplusplus-plain colored"},
+            {n: "rust:tokio", i: "devicon-rust-plain colored"}, {n: "nova:quantum-core", i: "fa-solid fa-atom"},
+            {n: "python:django", i: "devicon-django-plain colored"}, {n: "js:node", i: "devicon-nodejs-plain colored"},
+            {n: "python:pandas", i: "devicon-pandas-original colored"}, {n: "ruby:rails", i: "devicon-rails-plain colored"},
+            {n: "php:laravel", i: "devicon-laravel-plain colored"}, {n: "go:gin", i: "devicon-go-plain colored"},
+            {n: "csharp:dotnet", i: "devicon-dot-net-plain colored"}, {n: "swift:ui", i: "devicon-swift-plain colored"},
+            {n: "dart:flutter", i: "devicon-flutter-plain colored"}, {n: "python:numpy", i: "devicon-numpy-original colored"},
+            {n: "js:vue", i: "devicon-vuejs-plain colored"}, {n: "kotlin:android", i: "devicon-kotlin-plain colored"}
+        ];
         function render(list) {
-            grid.innerHTML = list.map(p => '<div class="card"><h3>'+p+'</h3><code>Nova.import("'+p+'")</code></div>').join('');
+            document.getElementById('package-grid').innerHTML = list.map(p => 
+                `<div class="package-card">
+                    <i class="${p.i}" style="${p.i.includes('fa-') ? 'font-size: 60px; color: #8b5cf6;' : ''}"></i>
+                    <h3>${p.n}</h3>
+                    <code>Nova.import("${p.n}")</code>
+                </div>`
+            ).join('');
         }
         function searchHub() {
             let filter = document.getElementById('hub-search').value.toLowerCase();
-            render(registry.filter(p => p.includes(filter)));
+            render(registry.filter(p => p.n.toLowerCase().includes(filter)));
         }
         render(registry);
     </script>

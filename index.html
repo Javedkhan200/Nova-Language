@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neura Studio | Nova OS</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="assets/logo.png" alt="Neura Studio Logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg'">
+            <img src="assets/logo.png" alt="" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg'">
             <span>NEURA STUDIO</span>
         </div>
         <div class="nav-links">
@@ -22,49 +20,19 @@
         </div>
         <a href="#download" class="btn-blue-outline">Download</a>
     </nav>
-
     <header class="hero">
         <h1>Make your code <br><span class="highlight-blue">faster.</span></h1>
         <p>Nova is the ultimate God-Mode alternative to Python, Java, and C++. Built for AI, Robotics, and Quantum computing with real-time OS control. All while staying familiar and simple to use.</p>
         <a href="#download" class="btn-blue-solid">Download Nova Engine</a>
     </header>
-
     <div class="showcase">
         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Code UI" class="screen side-screen">
         <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Main UI" class="screen main-screen">
         <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Hacker UI" class="screen side-screen">
     </div>
-
     <div class="press-logos">
-        <div class="press-item">
-            <h3>Forbes</h3>
-            <p>"Nova is just so clean and powerful. I don't really anticipate a learning curve for new developers."</p>
-        </div>
-        <div class="press-item">
-            <h3>TechRadar</h3>
-            <p>"It has everything in terms of offering a friendly experience to those coming from Python or Java."</p>
-        </div>
+        <div class="press-item"><h3>Forbes</h3><p>"Nova is just so clean and powerful. I don't really anticipate a learning curve for new developers."</p></div>
+        <div class="press-item"><h3>TechRadar</h3><p>"It has everything in terms of offering a friendly experience to those coming from Python or Java."</p></div>
     </div>
-
-    <section id="download" class="installer-section">
-        <h2>Get Nova for your PC</h2>
-        <div class="grid">
-            <div class="card" onclick="showCmd('Windows')"><i class="devicon-windows8-original colored"></i> Windows</div>
-            <div class="card" onclick="showCmd('macOS')"><i class="devicon-apple-original colored"></i> macOS</div>
-            <div class="card" onclick="showCmd('Linux')"><i class="devicon-linux-plain colored"></i> Linux</div>
-        </div>
-        <div id="cmd-box" class="code-box hidden" style="margin-top: 20px;">
-            <code id="final-command"></code>
-            <button onclick="navigator.clipboard.writeText(document.getElementById('final-command').innerText); alert('Copied!');"><i class="fa-solid fa-copy"></i> Copy</button>
-        </div>
-    </section>
-    
-    <script>
-        function showCmd(os) {
-            let cmd = os === 'Windows' ? 'iwr -useb https://raw.githubusercontent.com/Javedkhan200/Nova-Language/main/install.ps1 | iex' : 'curl -sL https://raw.githubusercontent.com/Javedkhan200/Nova-Language/main/install.sh | bash';
-            document.getElementById('final-command').innerText = cmd;
-            document.getElementById('cmd-box').classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
