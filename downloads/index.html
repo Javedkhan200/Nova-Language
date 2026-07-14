@@ -10,7 +10,10 @@
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1f2937; margin: 0; padding: 0; text-align: center; }
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.4rem; color: #0f172a; text-decoration: none; }
-        .logo img { height: 55px; width: auto; object-fit: contain; image-rendering: -webkit-optimize-contrast; border-radius: 8px; }
+        
+        /* नया सर्कुलर और प्रीमियम लोगो CSS */
+        .logo img { height: 60px; width: 60px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4); border: 2px solid #0ea5e9; background: #000000; padding: 2px; }
+        
         .nav-links a { margin: 0 15px; text-decoration: none; color: #6b7280; font-weight: 600; }
         .nav-links a:hover { color: #0ea5e9; }
         
@@ -70,7 +73,7 @@
             <h3 style="font-size: 1.5rem; color: #0ea5e9; margin-bottom: 10px;">3. Run this command in your terminal</h3>
             <div class="code-box">
                 <code id="final-command"></code>
-                <button onclick="copyCmd()"><i class="fa-solid fa-copy"></i> Copy</button>
+                <button id="copy-btn" onclick="copyCmd(this)"><i class="fa-solid fa-copy"></i> Copy</button>
             </div>
             <p style="color: #10b981; font-weight: 600; margin-bottom: 30px;"><i class="fa-solid fa-circle-check"></i> GUI Installer and extensions will configure automatically.</p>
             <button class="btn-reset" onclick="location.reload()">Start Over</button>
@@ -82,7 +85,6 @@
         
         function selectOS(os) {
             selectedOS = os;
-            // Direct Style changing (Bulletproof)
             document.getElementById('step-1').style.display = 'none';
             document.getElementById('os-title').innerText = '2. Target IDE for ' + os;
             document.getElementById('step-2').style.display = 'block';
@@ -102,9 +104,20 @@
             document.getElementById('step-3').style.display = 'block';
         }
 
-        function copyCmd() {
+        // स्मार्ट कॉपी फंक्शन (बिना Alert के)
+        function copyCmd(btn) {
             navigator.clipboard.writeText(document.getElementById('final-command').innerText);
-            alert('Command copied to clipboard! Paste it in your terminal.');
+            
+            // बटन का टेक्स्ट और कलर बदलें
+            let originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+            btn.style.background = '#10b981'; // Green Success Color
+            
+            // 2 सेकंड बाद वापस पहले जैसा कर दें
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                btn.style.background = '#0ea5e9'; // Back to Blue
+            }, 2000);
         }
     </script>
 </body>
