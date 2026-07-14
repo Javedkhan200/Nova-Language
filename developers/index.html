@@ -1,81 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>For Developers | Nova Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <title>Nova Hub | Neura Studio</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body style="background: #f8fafc;">
+<body>
     <nav class="navbar">
-        <div class="logo">
-            <img src="../assets/logo.png" alt="Logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg'">
-            <span>NEURA STUDIO</span>
-        </div>
-        <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="../overview/index.html">Overview</a>
-            <a href="../pro/index.html">Pro</a>
-        </div>
+        <div class="logo"><img src="../assets/logo.png"><span>NEURA STUDIO</span></div>
+        <div class="nav-links"><a href="../index.html">Home</a><a href="../overview/index.html">Overview</a><a href="../pro/index.html">Pro</a></div>
     </nav>
-
-    <header style="padding: 60px 20px; text-align: center;">
-        <h1 style="font-size: 3.5rem; color: #1e293b;">Nova Hub <i class="fa-solid fa-boxes-stacked" style="color: #0ea5e9;"></i></h1>
-        <p style="font-size: 1.2rem; color: #64748b;">The Universal Package Manager. Search and install millions of packages natively into Nova.</p>
-    </header>
-
-    <section class="hub-section">
-        <div class="search-container">
-            <input type="text" id="hub-search" placeholder="Search packages (e.g. tensorflow, react, tokio)..." onkeyup="searchHub()">
-            <button><i class="fa-solid fa-search"></i> Search</button>
-        </div>
-
+    <div class="hero">
+        <h1>Nova Hub <i class="fa-solid fa-boxes-stacked"></i></h1>
+        <input type="text" id="hub-search" placeholder="Search 3,560,000+ packages..." onkeyup="searchHub()" style="padding: 15px; width: 60%; border-radius: 8px; border: 1px solid #ccc;">
         <div class="hub-grid" id="package-grid">
-            <div class="package-card">
-                <i class="devicon-python-plain colored" style="font-size: 60px;"></i>
-                <h3>python:tensorflow</h3>
-                <code>Nova.import("python:tensorflow")</code>
-            </div>
-            <div class="package-card">
-                <i class="devicon-javascript-plain colored" style="font-size: 60px;"></i>
-                <h3>js:react</h3>
-                <code>Nova.import("js:react")</code>
-            </div>
-            <div class="package-card">
-                <i class="devicon-java-plain colored" style="font-size: 60px;"></i>
-                <h3>java:spring</h3>
-                <code>Nova.import("java:spring")</code>
-            </div>
-            <div class="package-card">
-                <i class="devicon-cplusplus-plain colored" style="font-size: 60px;"></i>
-                <h3>cpp:boost</h3>
-                <code>Nova.import("cpp:boost")</code>
-            </div>
-            <div class="package-card">
-                <i class="devicon-rust-plain colored" style="font-size: 60px;"></i>
-                <h3>rust:tokio</h3>
-                <code>Nova.import("rust:tokio")</code>
-            </div>
-            <div class="package-card">
-                <img src="../assets/logo.png" style="width: 60px;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg'">
-                <h3>nova:quantum-core</h3>
-                <code>Nova.import("nova:quantum")</code>
-            </div>
+            <!-- डायनामिक पैकेजेस यहां आएंगे -->
         </div>
-    </section>
-
+    </div>
     <script>
-        function searchHub() {
-            let filter = document.getElementById('hub-search').value.toUpperCase();
-            let cards = document.getElementById('package-grid').getElementsByClassName('package-card');
-            for (let i = 0; i < cards.length; i++) {
-                let txtValue = cards[i].getElementsByTagName("h3")[0].textContent || cards[i].getElementsByTagName("h3")[0].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) { cards[i].style.display = ""; } 
-                else { cards[i].style.display = "none"; }
-            }
+        const registry = ["tensorflow", "react", "spring", "boost", "tokio", "pandas", "numpy", "django", "laravel", "express"];
+        const grid = document.getElementById('package-grid');
+        function render(list) {
+            grid.innerHTML = list.map(p => '<div class="card"><h3>'+p+'</h3><code>Nova.import("'+p+'")</code></div>').join('');
         }
+        function searchHub() {
+            let filter = document.getElementById('hub-search').value.toLowerCase();
+            render(registry.filter(p => p.includes(filter)));
+        }
+        render(registry);
     </script>
 </body>
 </html>
