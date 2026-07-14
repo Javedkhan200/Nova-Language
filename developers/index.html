@@ -10,7 +10,7 @@
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1f2937; margin: 0; padding: 0; text-align: center; }
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.4rem; color: #0f172a; text-decoration: none; }
-        .logo img { height: 60px; width: 60px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4); border: 2px solid #0ea5e9; background: #000000; padding: 2px; }
+        .logo img { height: 55px; width: 55px; object-fit: contain; border-radius: 50%; box-shadow: 0 8px 24px rgba(14, 165, 233, 0.8), 0 0 12px rgba(14, 165, 233, 0.5); border: 2px solid #0ea5e9; background: transparent; padding: 3px; transform: translateZ(0); transition: 0.3s; }
         .nav-links a { margin: 0 15px; text-decoration: none; color: #6b7280; font-weight: 600; }
         .hub-section { padding: 40px 5%; }
         .search-container { margin: 30px auto; max-width: 600px; display: flex; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 30px; overflow: hidden; background: white; border: 1px solid #e2e8f0; }
@@ -31,11 +31,11 @@
         </a>
         <div class="nav-links"><a href="../index.html">Home</a><a href="../overview/index.html">Overview</a><a href="../pro/index.html">Pro</a></div>
     </nav>
-    <header style="padding: 60px 20px 10px;">
+    <header style="animation: fadeUp 1s ease-out; padding: 60px 20px 10px;">
         <h1 style="font-size: 3.5rem; color: #0f172a; font-weight: 800; margin: 0;">Nova Hub <i class="fa-solid fa-boxes-stacked" style="color: #0ea5e9;"></i></h1>
         <p style="color: #64748b; font-size: 1.2rem; margin-top: 10px;">The Universal Package Manager. Search and install from 3,560,000+ packages.</p>
     </header>
-    <section class="hub-section">
+    <section class="hub-section" style="animation: fadeUp 1.2s ease-out;">
         <div class="search-container">
             <input type="text" id="hub-search" placeholder="Search Python, JS, C++, Java, Rust packages..." onkeyup="searchHub()">
             <button><i class="fa-solid fa-search"></i> Search</button>
