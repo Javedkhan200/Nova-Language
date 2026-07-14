@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>For Developers | Nova Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=10.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link rel="stylesheet" href="../style.css">
 </head>
 <body style="background: #f8fafc;">
     <nav class="navbar">
-        <div class="logo">
-            <img src="../assets/logo.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg'">
+        <a href="../index.html" class="logo">
+            <img src="../assets/logo.png" onerror="this.src='https://ui-avatars.com/api/?name=Neura+Studio&background=0D8ABC&color=fff&rounded=true'">
             <span>NEURA STUDIO</span>
-        </div>
+        </a>
         <div class="nav-links">
             <a href="../index.html">Home</a>
             <a href="../overview/index.html">Overview</a>
@@ -41,12 +40,16 @@
             {n: "php:laravel", i: "devicon-laravel-plain colored"}, {n: "go:gin", i: "devicon-go-plain colored"},
             {n: "csharp:dotnet", i: "devicon-dot-net-plain colored"}, {n: "swift:ui", i: "devicon-swift-plain colored"},
             {n: "dart:flutter", i: "devicon-flutter-plain colored"}, {n: "python:numpy", i: "devicon-numpy-original colored"},
-            {n: "js:vue", i: "devicon-vuejs-plain colored"}, {n: "kotlin:android", i: "devicon-kotlin-plain colored"}
+            {n: "js:vue", i: "devicon-vuejs-plain colored"}, {n: "kotlin:android", i: "devicon-kotlin-plain colored"},
+            {n: "python:keras", i: "devicon-keras-plain colored"}, {n: "c:opengl", i: "devicon-c-plain colored"},
+            {n: "js:angular", i: "devicon-angularjs-plain colored"}, {n: "rust:actix", i: "devicon-rust-plain colored"},
+            {n: "nova:robotics-api", i: "fa-solid fa-robot"}, {n: "java:hibernate", i: "devicon-java-plain colored"},
+            {n: "nova:ai-brain", i: "fa-solid fa-brain"}, {n: "python:pytorch", i: "devicon-pytorch-original colored"}
         ];
         function render(list) {
-            document.getElementById('package-grid').innerHTML = list.map(p =>
+            document.getElementById('package-grid').innerHTML = list.map(p => 
                 `<div class="package-card">
-                    <i class="${p.i}" style="${p.i.includes('fa-') ? 'font-size: 60px; color: #8b5cf6;' : ''}"></i>
+                    <i class="${p.i}" style="${p.i.includes('fa-') ? 'font-size: 65px; color: #8b5cf6;' : ''}"></i>
                     <h3>${p.n}</h3>
                     <code>Nova.import("${p.n}")</code>
                 </div>`
