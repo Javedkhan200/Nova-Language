@@ -698,24 +698,5 @@ CMakeFiles/nova.dir/runtime/vm.cpp.o: \
   /data/data/com.termux/files/usr/bin/../../usr/include/unistd.h \
   /data/data/com.termux/files/home/Nova/runtime/ffi.h \
   /data/data/com.termux/files/home/Nova/runtime/../robotics_control/robot_core.h \
-  /data/data/com.termux/files/home/Nova/runtime/../advanced_ai_core/ai_core.h \
   /data/data/com.termux/files/home/Nova/runtime/../operating_system_layer/j_kernel.h \
-  /data/data/com.termux/files/home/Nova/runtime/../full_stack_dev/hyperweb.h \
-  /data/data/com.termux/files/home/Nova/runtime/../standard_library/database/nova_db.h \
-  /data/data/com.termux/files/home/Nova/runtime/../security/nova_security.h \
-  /data/data/com.termux/files/home/Nova/runtime/../networking/nova_network.h \
-  /data/data/com.termux/files/home/Nova/runtime/../standard_library/finance/nova_finance.h \
-  /data/data/com.termux/files/home/Nova/runtime/../standard_library/health/nova_health.h \
-  /data/data/com.termux/files/home/Nova/runtime/../game_engine/nova_game.h \
-  /data/data/com.termux/files/home/Nova/runtime/../blockchain_web3/nova_web3.h \
-  /data/data/com.termux/files/home/Nova/runtime/../package_ecosystem/nova_pm.h \
-  /data/data/com.termux/files/home/Nova/runtime/../tooling/nova_tools.h \
-  /data/data/com.termux/files/home/Nova/runtime/../hardware_control/embedded_targets/nova_iot.h \
-  /data/data/com.termux/files/home/Nova/runtime/../deployment/nova_deploy.h \
-  /data/data/com.termux/files/home/Nova/runtime/../experiments/quantum/nova_quantum.h \
-  /data/data/com.termux/files/home/Nova/runtime/../graphics/nova_graphics.h \
-  /data/data/com.termux/files/home/Nova/runtime/../physics_engine/nova_physics.h \
-  /data/data/com.termux/files/home/Nova/runtime/../ui/nova_ui.h \
-  /data/data/com.termux/files/home/Nova/runtime/../testing/nova_test.h \
-  /data/data/com.termux/files/home/Nova/runtime/../analytics/nova_telemetry.h \
-  /data/data/com.termux/files/home/Nova/runtime/../docs/nova_docgen.h
+  /data/data/com.termux/files/home/Nova/runtime/../advanced_ai_core/ai_core.h

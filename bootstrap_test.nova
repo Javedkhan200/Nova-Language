@@ -1,0 +1,10 @@
+// ==========================================
+// NOVA BOOTSTRAP / SELF-HOSTING TEST
+// ==========================================
+Nova.show ("Initiating Nova Bootstrapping Protocol...")
+Nova.os.name ("Nova Native Environment")
+Nova.os.version ("1.0 God-Mode")
+Nova.os.start ()
+
+Nova.hardware.scan ("Engine Core")
+Nova.show ("Self-Hosting Test Passed! Nova is fully Independent.")

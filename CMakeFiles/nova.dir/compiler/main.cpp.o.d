@@ -718,5 +718,4 @@ CMakeFiles/nova.dir/compiler/main.cpp.o: \
   /data/data/com.termux/files/home/Nova/compiler/parser.h \
   /data/data/com.termux/files/home/Nova/compiler/bytecode.h \
   /data/data/com.termux/files/home/Nova/compiler/../runtime/vm.h \
-  /data/data/com.termux/files/home/Nova/compiler/../runtime/../compiler/parser.h \
-  /data/data/com.termux/files/home/Nova/compiler/../system_logs/nova_logger.h
+  /data/data/com.termux/files/home/Nova/compiler/../runtime/../compiler/parser.h
