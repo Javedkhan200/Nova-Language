@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Language | Zorin Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Nova">
+            <span>NOVA OS</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Overview</a>
+            <a href="#">For Developers</a>
+            <a href="#">Pro</a>
+        </div>
+        <a href="#download" class="btn-blue-outline">Download</a>
+    </nav>
+
+    <header class="hero">
+        <h1>Make your code <br><span class="highlight-blue">faster.</span></h1>
+        <p>Nova is the ultimate alternative to Python and C++, designed to make your development faster, more powerful, secure, and limitless. All while staying familiar and <strong>simple</strong> to use.</p>
+        <a href="#download" class="btn-blue-solid">Download Nova Engine</a>
+    </header>
+
+    <div class="showcase">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Code UI" class="screen side-screen">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Main UI" class="screen main-screen">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Hacker UI" class="screen side-screen">
+    </div>
+
+    <div class="press-logos">
+        <div class="press-item">
+            <h3>Forbes</h3>
+            <p>"[Nova] is just so clean and powerful. I don't really anticipate a learning curve for new developers."</p>
+        </div>
+        <div class="press-item">
+            <h3>TechRadar</h3>
+            <p>"It has everything in terms of offering a friendly experience to those coming from Python or Java."</p>
+        </div>
+    </div>
+
+    <section id="download" class="installer-section">
+        <h2>Get Nova for your PC</h2>
+        
+        <div id="step-1" class="step active">
+            <h3>Choose your OS</h3>
+            <div class="grid">
+                <div class="card" onclick="selectOS('Windows')"><i class="devicon-windows8-original colored"></i> Windows</div>
+                <div class="card" onclick="selectOS('macOS')"><i class="devicon-apple-original colored"></i> macOS</div>
+                <div class="card" onclick="selectOS('Linux')"><i class="devicon-linux-plain colored"></i> Linux</div>
+            </div>
+        </div>
+
+        <div id="step-2" class="step hidden">
+            <h3>Select IDE Integration</h3>
+            <div class="grid">
+                <div class="card" onclick="selectIDE('VS Code')"><i class="devicon-vscode-plain colored"></i> VS Code</div>
+                <div class="card" onclick="selectIDE('PyCharm')"><i class="devicon-pycharm-plain colored"></i> PyCharm</div>
+                <div class="card" onclick="selectIDE('Terminal')"><i class="devicon-bash-plain colored"></i> Terminal</div>
+            </div>
+        </div>
+
+        <div id="step-3" class="step hidden">
+            <h3>Run this in your terminal</h3>
+            <div class="code-box">
+                <code id="final-command"></code>
+                <button onclick="copyCommand()"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <button class="btn-blue-outline" onclick="location.reload()" style="margin-top:20px;">Start Over</button>
+        </div>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
